@@ -1,0 +1,12 @@
+---
+- name: Compliance Check NETWORK TIME
+  hosts: all
+  connection: network_cli
+  gather_facts: no
+
+
+  tasks:
+    - name: CONFIGURE NTP
+      ios_config:
+        lines: "{{ item }}"
+      loop: "{{ ntp_servers }}"
